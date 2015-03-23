@@ -10,7 +10,10 @@ class LocationsController < ApplicationController
     @locations = Location.all
     respond_to do |format|
       format.html
-      format.gpx
+      format.gpx do 
+        response.
+          headers['Content-Disposition'] = 'attachment; filename=GeoCodedLocations' + Date.today.to_s + '.gpx'
+      end
     end
   end
 
