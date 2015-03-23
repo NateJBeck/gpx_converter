@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Locations</h1>
+<% unless @locations.empty? %>
+  Download as <%= link_to "GPX", locations_path(format: "gpx") %>
+  <% end %>
 
 <table>
   <thead>
