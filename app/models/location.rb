@@ -4,7 +4,14 @@ class Location < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      Location.create!(address: row["address"])
+      address = row["address"]
+      if is_not_duplicate?(address)
+        Location.create!(address: row["address"])
+      end
     end
+  end
+
+  def self.is_not_duplicate?(address)
+    Location.where(address: address).empty?
   end
 end
