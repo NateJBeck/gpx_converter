@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
     CSV.foreach(file.path, headers: true) do |row|
       address = row["address"]
       if is_not_duplicate?(address)
-        Location.create!(address: row["address"])
+        Location.create!(address: address)
       end
     end
   end

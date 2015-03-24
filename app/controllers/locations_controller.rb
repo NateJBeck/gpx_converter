@@ -10,9 +10,9 @@ class LocationsController < ApplicationController
     @locations = Location.all
     respond_to do |format|
       format.html
-      format.gpx do 
-        response.
-          headers['Content-Disposition'] = 'attachment; filename=GeoCodedLocations' + Date.today.to_s + '.gpx'
+      format.gpx do
+        name_and_download_GPX
+        LocationSweeper.new.clear_database_after_download
       end
     end
   end
@@ -93,5 +93,11 @@ class LocationsController < ApplicationController
       params.
         require(:location).
         permit(:address, :latitude, :longitude)
+    end
+
+    def name_and_download_GPX
+      file_name = "GeoCodedLocations" + Date.today.to_s + ".gpx"
+      response.headers['Content-Disposition'] = 'attachment; filename=' + file_name
+      render "index.gpx.erb"
     end
 end
