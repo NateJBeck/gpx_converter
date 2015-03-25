@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" creator="MapSource 6.13.4" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensions/v3/GpxExtensionsv3.xsd http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
   <% @locations.each do |location| %>
-    <wpt lat=<%= location.latitude.to_s %> lon=<%= location.longitude.to_s %>>
+    <wpt lat="<%= location.latitude.to_s %>" lon="<%= location.longitude.to_s %>">
       <name><%= location.address %></name>
       <sym>Residence</sym>
     </wpt>
